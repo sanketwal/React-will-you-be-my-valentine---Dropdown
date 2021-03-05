@@ -142,10 +142,12 @@ function App() {
 
 	const [stateName, setState] = useState(states[0])
 	const [city, setCity] = useState(stateName.city[0]);
-	const [landmark, setLandmark] = useState(city.landmarks	[0]);
+	const [landmark, setLandmark] = useState(city.landmarks[0]);
 
 	function handleChange(event) {
 		setState(states[event.target.value])
+		setCity(stateName.city[0])
+		setLandmark(city.landmarks[0])
 	}
 
 	function handleCityChange(event) {
@@ -153,7 +155,6 @@ function App() {
 	}
 
 	function handleLandmarkChnage(event) {
-		// console.log(city.landmarks[event.target.value])
 		setLandmark(city.landmarks[event.target.value])
 	}
 
@@ -168,7 +169,6 @@ function App() {
 
 			<select city="city" onChange={handleCityChange}>
 				{
-					// renderCity()
 					stateName.city.map(
 						(cityName, i) => {
 						return <option value={i}>{cityName.name}</option>
@@ -179,7 +179,6 @@ function App() {
 
 			<select id="landmark" onChange={handleLandmarkChnage}>
 				{
-					// renderLandmark()
 					city.landmarks.map(
 						(landMark, i) => {
 						return <option value={i}>{landMark.name}</option>
